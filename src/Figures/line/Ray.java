@@ -1,27 +1,29 @@
 package Figures.line;
 
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Paint;
 
 import java.awt.*;
 
 public class Ray extends Segment {
 
-    public Ray(Point theCenter, Point endPoint, int frameWidth, Color frameColor) {
+    public Ray(Point2D theCenter, Point2D endPoint, int frameWidth, Paint frameColor) {
         super(theCenter, endPoint, frameWidth, frameColor);
     }
 
     @Override
-    public void setEndPoint(Point endPoint, boolean smooth) {
-        if(endPoint.x>0 && endPoint.x<Toolkit.getDefaultToolkit().getScreenSize().getWidth() &&
-                endPoint.y>0 && endPoint.y<Toolkit.getDefaultToolkit().getScreenSize().getHeight())
+    public void setEndPoint(Point2D endPoint, boolean smooth) {
+        if(endPoint.getX()>0 && endPoint.getX()<Toolkit.getDefaultToolkit().getScreenSize().getWidth() &&
+                endPoint.getY()>0 && endPoint.getY()<Toolkit.getDefaultToolkit().getScreenSize().getHeight())
             endPoint = getOutScreenPoint(endPoint);
         super.setEndPoint(endPoint, smooth);
     }
 
-    public Point getOutScreenPoint(Point pt) {
-        Point theCenter = getLocation();
-        Point result = new Point();
-        double deltaX = pt.x - theCenter.x;
-        double deltaY = pt.y - theCenter.y;
+    public Point2D getOutScreenPoint(Point2D pt) {
+        Point2D theCenter = getLocation();
+        Point2D result;
+        double deltaX = pt.getX() - theCenter.getX();
+        double deltaY = pt.getY() - theCenter.getY();
         if (deltaX==0 && deltaY==0)
             return pt;
         if (Math.abs(deltaX) < Math.abs(deltaY)) {
@@ -30,14 +32,14 @@ public class Ray extends Segment {
                 height = -1;
             else
                 height = Toolkit.getDefaultToolkit().getScreenSize().getHeight() + 1;
-            result.setLocation(deltaX / deltaY * (height - theCenter.y) + theCenter.x, height);
+            result = new Point2D(deltaX / deltaY * (height - theCenter.getY()) + theCenter.getX(), height);
         } else {
             double width;
             if (deltaX < 0)
                 width = -1;
             else
                 width = Toolkit.getDefaultToolkit().getScreenSize().getWidth() + 1;
-            result.setLocation(width, deltaY / deltaX * (width - theCenter.x) + theCenter.y);
+            result = new Point2D(width, deltaY / deltaX * (width - theCenter.getX()) + theCenter.getY());
         }
         return result;
     }

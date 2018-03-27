@@ -1,19 +1,23 @@
 package Figures.line;
-import java.awt.*;
+
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Paint;
+
 
 public class Line extends Ray {
 
 
-    public Line(Point theCenter, Point endPoint, int frameWidth, Color frameColor) {
+    public Line(Point2D theCenter, Point2D endPoint, int frameWidth, Paint frameColor) {
         super(theCenter, endPoint, frameWidth, frameColor);
     }
 
     @Override
-    public void draw(Graphics2D g) {
+    public void draw(GraphicsContext g) {
         super.draw(g);
-        Point theCenter = getLocation();
-        Point endPoint = getEndPoint();
-        setEndPoint(new Point(2*theCenter.x-endPoint.x, 2*theCenter.y-endPoint.y));
+        Point2D theCenter = getLocation();
+        Point2D endPoint = getEndPoint();
+        setEndPoint(new Point2D(2*theCenter.getX()-endPoint.getX(), 2*theCenter.getY()-endPoint.getY()));
         super.draw(g);
     }
 }

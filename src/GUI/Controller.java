@@ -4,6 +4,7 @@ import Figures.base.Shape;
 import Figures.ellipse.Ellipse;
 import Figures.ellipse.Rectangle;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -11,7 +12,6 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class Controller {
     private boolean isDrawing = false;
     private List<Shape> figures = new ArrayList<>();
     private Shape currentFigure;
-    private Point currentCenter;
+    private Point2D currentCenter;
     @FXML
     public void initialize() {
         bttnSelection.setOnAction(event -> currentMode = Mode.SELECTION);
@@ -104,13 +104,13 @@ public class Controller {
                 break;
             case DRAW_RECTANGLE:
                 if (!isDrawing){
-                    currentCenter = new Point(Double.valueOf(mouseEvent.getX()).intValue(),
+                    currentCenter = new Point2D(Double.valueOf(mouseEvent.getX()).intValue(),
                                               Double.valueOf(mouseEvent.getX()).intValue());
                     currentFigure = new Rectangle(currentCenter, currentCenter);
                     figures.add(currentFigure);
                     isDrawing = true;
                 } else {
-                    ((Rectangle) currentFigure).setCornerPoint(new Point(Double.valueOf(mouseEvent.getX()).intValue(),
+                    ((Rectangle) currentFigure).setCornerPoint(new Point2D(Double.valueOf(mouseEvent.getX()).intValue(),
                             Double.valueOf(mouseEvent.getX()).intValue()));
 
 

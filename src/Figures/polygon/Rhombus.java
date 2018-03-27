@@ -1,24 +1,26 @@
 package Figures.polygon;
 
 
-import java.awt.*;
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Paint;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Rhombus extends Parallelogram {
 
-    public Rhombus(Point theCenter, Point cornerPoint, int frameWidth, Color frameColor, Color fillColor) {
+    public Rhombus(Point2D theCenter, Point2D cornerPoint, int frameWidth, Paint frameColor, Paint fillColor) {
         super(theCenter, cornerPoint, frameWidth, frameColor, fillColor);
     }
 
     @Override
-    public List<Point> getParallelogramPoints(Point cornerPoint) {
-        Point theCenter = getLocation();
-        List<Point> points = new ArrayList<>(4);
-        points.add(new Point(cornerPoint.x, theCenter.y));
-        points.add(new Point(theCenter.x, 2*theCenter.y-cornerPoint.y));
-        points.add(new Point(2*theCenter.x-cornerPoint.x, theCenter.y));
-        points.add(new Point(theCenter.x, cornerPoint.y));
+    public List<Point2D> getParallelogramPoints(Point2D cornerPoint) {
+        Point2D theCenter = getLocation();
+        List<Point2D> points = new ArrayList<>(4);
+        points.add(new Point2D(cornerPoint.getX(), theCenter.getY()));
+        points.add(new Point2D(theCenter.getX(), 2*theCenter.getY()-cornerPoint.getY()));
+        points.add(new Point2D(2*theCenter.getX()-cornerPoint.getX(), theCenter.getY()));
+        points.add(new Point2D(theCenter.getX(), cornerPoint.getY()));
         return points;
     }
 }

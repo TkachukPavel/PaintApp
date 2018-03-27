@@ -3,7 +3,6 @@ package Figures.base;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.Light;
 import javafx.scene.paint.Paint;
 
 import java.awt.*;
@@ -31,7 +30,7 @@ public abstract class Shape {
 
     public abstract void draw(GraphicsContext g);
 
-    public abstract boolean contains(Light.Point pt);
+    public abstract boolean contains(Point2D pt);
 
     public Point2D getLocation() {
         return theCenter;

@@ -1,8 +1,9 @@
 package Figures.ellipse;
 
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Paint;
 
-import java.awt.*;
 
 public class Rectangle extends Ellipse {
 
@@ -10,11 +11,11 @@ public class Rectangle extends Ellipse {
 
     }
 
-    public Rectangle(Point theCenter, Point secondPoint) {
+    public Rectangle(Point2D theCenter, Point2D secondPoint) {
         super(theCenter, secondPoint);
     }
 
-    public Rectangle(Point theCenter, Point cornerPoint, int frameWidth, Color frameColor, Color fillColor) {
+    public Rectangle(Point2D theCenter, Point2D cornerPoint, int frameWidth, Paint frameColor, Paint fillColor) {
         super(theCenter, cornerPoint, frameWidth, frameColor, fillColor);
     }
 
@@ -29,19 +30,19 @@ public class Rectangle extends Ellipse {
 //        g.setColor(getFrameColor());
 //        g.drawRect(cornerPoint.x, cornerPoint.y, width, height);
         g.setFill(javafx.scene.paint.Paint.valueOf(getFillColor().toString()));
-        g.fillRect(cornerPoint.x, cornerPoint.y, width, height);
+        g.fillRect(cornerPoint.getX(), cornerPoint.getY(), width, height);
         g.setStroke(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
-        g.strokeRect(cornerPoint.x, cornerPoint.y, width, height);
+        g.strokeRect(cornerPoint.getX(), cornerPoint.getY(), width, height);
 
     }
 
     @Override
-    public boolean contains(Point pt) {
+    public boolean contains(Point2D pt) {
         int[] size = setCornerPoint(cornerPoint);
         int width = size[0];
         int height = size[1];
-        return pt.x >= cornerPoint.x && pt.x <= cornerPoint.x + width &&
-                pt.y >= cornerPoint.y && pt.y <= cornerPoint.y + height;
+        return pt.getX() >= cornerPoint.getX() && pt.getX() <= cornerPoint.getX() + width &&
+                pt.getY() >= cornerPoint.getY() && pt.getY() <= cornerPoint.getY() + height;
     }
 
 }

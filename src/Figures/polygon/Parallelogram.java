@@ -1,23 +1,24 @@
 package Figures.polygon;
 
 
-import java.awt.*;
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Paint;
+
 import java.util.*;
-import java.util.List;
 
 public class Parallelogram extends Polygon {
 
-    public Parallelogram(Point theCenter, Point cornerPoint, int frameWidth, Color frameColor, Color fillColor) {
+    public Parallelogram(Point2D theCenter, Point2D cornerPoint, int frameWidth, Paint frameColor, Paint fillColor) {
         super(theCenter, frameWidth, frameColor, fillColor);
         setPoints(getParallelogramPoints(cornerPoint));
     }
 
-    public List<Point> getParallelogramPoints(Point cornerPoint){
-        Point theCenter = getLocation();
-        List<Point> points = new ArrayList<>(4);
-        Point upperLeft = new Point(2*theCenter.x-cornerPoint.x, 2*theCenter.y-cornerPoint.y);
-        Point upperRight = new Point(cornerPoint.x+cornerPoint.y-upperLeft.y,upperLeft.y);
-        Point bottomLeft = new Point(2*theCenter.x-upperRight.x, 2*theCenter.y-upperRight.y);
+    public List<Point2D> getParallelogramPoints(Point2D cornerPoint){
+        Point2D theCenter = getLocation();
+        List<Point2D> points = new ArrayList(4);
+        Point2D upperLeft = new Point2D(2*theCenter.getX()-cornerPoint.getX(), 2*theCenter.getY()-cornerPoint.getY());
+        Point2D upperRight = new Point2D(cornerPoint.getX()+cornerPoint.getY()-upperLeft.getY(),upperLeft.getY());
+        Point2D bottomLeft = new Point2D(2*theCenter.getX()-upperRight.getX(), 2*theCenter.getY()-upperRight.getY());
         points.add(cornerPoint);
         points.add(upperRight);
         points.add(upperLeft);
@@ -25,7 +26,7 @@ public class Parallelogram extends Polygon {
         return points;
     }
 
-    public void setCornerPoint(Point pt){
+    public void setCornerPoint(Point2D pt){
         setPoints(getParallelogramPoints(pt));
     }
 }

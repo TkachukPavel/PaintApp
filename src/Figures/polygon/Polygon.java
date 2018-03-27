@@ -2,8 +2,10 @@ package Figures.polygon;
 
 
 import Figures.base.Shape2D;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Paint;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,8 +13,8 @@ import java.util.List;
 public abstract class Polygon extends Shape2D {
 
     protected int nPoints;
-    protected Point[] points;
-    protected Point secondPoint;
+    protected Point2D[] points;
+    protected Point2D secondPoint;
 
     private static final int MIN_LENGTH = 4;
 
@@ -20,26 +22,26 @@ public abstract class Polygon extends Shape2D {
 
     }
 
-    public Polygon(Point theCenter, int frameWidth, Color frameColor, Color fillColor) {
+    public Polygon(Point2D theCenter, int frameWidth, Paint frameColor, Paint fillColor) {
         super(theCenter, frameWidth, frameColor, fillColor);
     }
 
-    public Polygon(Point theCenter, List<Point> points, int frameWidth, Color frameColor, Color fillColor) {
+    public Polygon(Point2D theCenter, List<Point2D> points, int frameWidth, Paint frameColor, Paint fillColor) {
         super(theCenter, frameWidth, frameColor, fillColor);
         setPoints(points);
     }
 
-    public void setPoints(List<Point> points) {
+    public void setPoints(List<Point2D> points) {
         nPoints = points.size();
-        this.points = new Point[nPoints];
+        this.points = new Point2D[nPoints];
         int i = 0;
-        for (Point p : points) {
+        for (Point2D p : points) {
             this.points[++i] = p;
         }
     }
 
-    public List<Point> getPoints() {
-        List<Point> points = new ArrayList<>(nPoints);
+    public List<Point2D> getPoints() {
+        List<Point2D> points = new ArrayList<>(nPoints);
         for (int i = 0; i < nPoints; ++i)
             points.add(this.points[i]);
         return points;
@@ -49,7 +51,7 @@ public abstract class Polygon extends Shape2D {
         return nPoints;
     }
 
-    public void addPoint(Point pt) {
+    public void addPoint(Point2D pt) {
         if (nPoints >= points.length) {
             int newLength = nPoints * 2;
             if (newLength < MIN_LENGTH) {
@@ -64,13 +66,13 @@ public abstract class Polygon extends Shape2D {
         setLocation(computeCenter());
     }
 
-    public void setLastPoint(Point pt){
+    public void setLastPoint(Point2D pt){
         points[nPoints-1] = pt;
         setLocation(computeCenter());
     }
 
-    private Point computeCenter(){
-        Point centroid = new Point(0,0);
+    private Point2D computeCenter(){
+        Point2D centroid = new Point2D(0,0);
         double signedArea = 0.0;
         double x0; // Current vertex X
         double y0; // Current vertex Y
@@ -80,58 +82,66 @@ public abstract class Polygon extends Shape2D {
 
         for (int i=0; i<nPoints-1; ++i)
         {
-            x0 = points[i].x;
-            y0 = points[i].y;
-            x1 = points[i+1].x;
-            y1 = points[i+1].y;
+            x0 = points[i].getX();
+            y0 = points[i].getY();
+            x1 = points[i+1].getX();
+            y1 = points[i+1].getY();
             a = x0*y1 - x1*y0;
             signedArea += a;
-            centroid.x += (x0 + x1)*a;
-            centroid.y += (y0 + y1)*a;
+
+            double x = centroid.getX() + (x0 + x1)*a;
+            double y = centroid.getY() + (y0 + y1)*a;
+
+            centroid = new Point2D(x, y);
         }
 
-        x0 = points[nPoints-1].x;
-        y0 = points[nPoints-1].y;
-        x1 = points[0].x;
-        y1 = points[0].y;
+        x0 = points[nPoints-1].getX();
+        y0 = points[nPoints-1].getY();
+        x1 = points[0].getX();
+        y1 = points[0].getY();
         a = x0*y1 - x1*y0;
         signedArea += a;
-        centroid.x += (x0 + x1)*a;
-        centroid.y += (y0 + y1)*a;
+
+        double x = centroid.getX() + (x0 + x1)*a;
+        double y = centroid.getY() + (y0 + y1)*a;
+
+        centroid = new Point2D(x, y);
 
         signedArea *= 0.5;
-        centroid.x /= (6.0*signedArea);
-        centroid.y /= (6.0*signedArea);
+
+        x = centroid.getX()/(6.0*signedArea);
+        y = centroid.getY()/(6.0*signedArea);
+
+        centroid = new Point2D(x, y);
 
         return centroid;
     }
 
     @Override
-    public void draw(Graphics2D g) {
-        g.setStroke(new BasicStroke(getFrameWidth()));
-        g.setColor(getFillColor());
-        int[] pointX = new int[nPoints];
-        int [] pointY = new int[nPoints];
+    public void draw(GraphicsContext g) {
+        g.setFill(javafx.scene.paint.Paint.valueOf(getFillColor().toString()));
+        double [] pointX = new double[nPoints];
+        double [] pointY = new double[nPoints];
         for (int i = 0; i < nPoints; i++){
-            pointX[i] = points[i].x;
-            pointY[i] = points[i].y;
+            pointX[i] =  points[i].getX();
+            pointY[i] =  points[i].getY();
         }
         g.fillPolygon(pointX, pointY, nPoints);
-        g.setColor(getFrameColor());
-        g.drawPolygon(pointX, pointY, nPoints);
+        g.setFill(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
+        g.strokePolygon(pointX, pointY, nPoints);
     }
 
     @Override
-    public boolean contains(Point pt) {
+    public boolean contains(Point2D pt) {
         int hits = 0;
 
-        int lastx = points[nPoints - 1].x;
-        int lasty = points[nPoints - 1].y;
+        int lastx = (int) points[nPoints - 1].getX();
+        int lasty = (int) points[nPoints - 1].getY();
         int curx, cury;
 
         for (int i = 0; i < nPoints; lastx = curx, lasty = cury, i++) {
-            curx = points[i].x;
-            cury = points[i].y;
+            curx = (int) points[i].getX();
+            cury = (int) points[i].getY();
 
             if (cury == lasty) {
                 continue;
@@ -139,12 +149,12 @@ public abstract class Polygon extends Shape2D {
 
             int leftx;
             if (curx < lastx) {
-                if (pt.x >= lastx) {
+                if (pt.getX() >= lastx) {
                     continue;
                 }
                 leftx = curx;
             } else {
-                if (pt.x >= curx) {
+                if (pt.getX() >= curx) {
                     continue;
                 }
                 leftx = lastx;
@@ -152,25 +162,25 @@ public abstract class Polygon extends Shape2D {
 
             double test1, test2;
             if (cury < lasty) {
-                if (pt.y < cury || pt.y >= lasty) {
+                if (pt.getY() < cury || pt.getY() >= lasty) {
                     continue;
                 }
-                if (pt.x < leftx) {
+                if (pt.getX() < leftx) {
                     hits++;
                     continue;
                 }
-                test1 = pt.x - curx;
-                test2 = pt.y - cury;
+                test1 = pt.getX() - curx;
+                test2 = pt.getY() - cury;
             } else {
-                if (pt.y < lasty || pt.y >= cury) {
+                if (pt.getY() < lasty || pt.getY() >= cury) {
                     continue;
                 }
-                if (pt.x < leftx) {
+                if (pt.getX() < leftx) {
                     hits++;
                     continue;
                 }
-                test1 = pt.x - lastx;
-                test2 = pt.y - lasty;
+                test1 = pt.getX() - lastx;
+                test2 = pt.getY() - lasty;
             }
 
             if (test1 < (test2 / (lasty - cury) * (lastx - curx))) {
@@ -181,13 +191,15 @@ public abstract class Polygon extends Shape2D {
     }
 
     @Override
-    public void move(Point pt) {
-        Point theCenter = getLocation();
-        int deltaX = pt.x - theCenter.x;
-        int deltaY = pt.y - theCenter.y;
+    public void move(Point2D pt) {
+        Point2D theCenter = getLocation();
+        int deltaX = (int) (pt.getX() - theCenter.getX());
+        int deltaY = (int) (pt.getY() - theCenter.getY());
         for (int i = 0; i < nPoints; i++) {
-            points[i].x += deltaX;
-            points[i].y += deltaY;
+            double x = points[i].getX() + deltaX;
+            double y = points[i].getY() + deltaY;
+
+            points[i] = new Point2D(x, y);
         }
         super.move(pt);
     }
