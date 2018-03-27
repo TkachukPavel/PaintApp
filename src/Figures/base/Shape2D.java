@@ -1,17 +1,20 @@
 package Figures.base;
 
 
-import java.awt.*;
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+
 
 public abstract class Shape2D extends Shape {
 
-	private Color fillColor = new Color(255,255,255);
+	private Paint fillColor = Paint.valueOf("White");
 
-    public Shape2D(Point theCenter) {
+    public Shape2D(Point2D theCenter) {
         super(theCenter);
     }
 
-    public Shape2D(Point theCenter, int frameWidth, Color frameColor, Color fillColor) {
+    public Shape2D(Point2D theCenter, int frameWidth, Paint frameColor, Paint fillColor) {
         super(theCenter, frameWidth, frameColor);
         this.fillColor = fillColor;
     }
@@ -20,11 +23,11 @@ public abstract class Shape2D extends Shape {
 
     }
 
-    public Color getFillColor() {
+    public Paint getFillColor() {
 		return fillColor;
 	}
 
-	public void setFillColor(Color fillColor) {
+	public void setFillColor(Paint fillColor) {
 		this.fillColor = fillColor;
 	}
 }

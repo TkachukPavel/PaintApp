@@ -1,5 +1,7 @@
 package Figures.ellipse;
 
+import javafx.scene.canvas.GraphicsContext;
+
 import java.awt.*;
 
 public class Rectangle extends Ellipse {
@@ -17,15 +19,19 @@ public class Rectangle extends Ellipse {
     }
 
     @Override
-    public void draw(Graphics2D g) {
+    public void draw(GraphicsContext g) {
         int[] size = setCornerPoint(cornerPoint);
         int width = size[0];
         int height = size[1];
-        g.setStroke(new BasicStroke(getFrameWidth()));
-        g.setColor(getFillColor());
+//        g.setStroke(new BasicStroke(getFrameWidth()));
+//        g.setColor(getFillColor());
+//        g.fillRect(cornerPoint.x, cornerPoint.y, width, height);
+//        g.setColor(getFrameColor());
+//        g.drawRect(cornerPoint.x, cornerPoint.y, width, height);
+        g.setFill(javafx.scene.paint.Paint.valueOf(getFillColor().toString()));
         g.fillRect(cornerPoint.x, cornerPoint.y, width, height);
-        g.setColor(getFrameColor());
-        g.drawRect(cornerPoint.x, cornerPoint.y, width, height);
+        g.setStroke(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
+        g.strokeRect(cornerPoint.x, cornerPoint.y, width, height);
 
     }
 

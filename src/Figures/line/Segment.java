@@ -1,6 +1,7 @@
 package Figures.line;
 
 import Figures.base.Shape1D;
+import javafx.scene.canvas.GraphicsContext;
 
 import java.awt.*;
 
@@ -12,11 +13,12 @@ public class Segment extends Shape1D {
     }
 
     @Override
-    public void draw(Graphics2D g) {
+    public void draw(GraphicsContext g) {
         Point startPoint = getLocation();
-        g.setStroke(new BasicStroke(getFrameWidth()));
-        g.setColor(getFrameColor());
-        g.drawLine(startPoint.x, startPoint.y, secondPoint.x, secondPoint.y);
+//        g.setStroke(new BasicStroke(getFrameWidth()));
+        g.setFill(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
+        g.moveTo(startPoint.x, startPoint.y);
+        g.lineTo( secondPoint.x, secondPoint.y);
     }
 
     @Override
