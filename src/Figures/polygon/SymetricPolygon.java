@@ -5,18 +5,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegularPolygon extends Polygon {
+public class SymetricPolygon extends Polygon {
 
     private int sideNum;
     private boolean isRotating = false;
 
 
-    public RegularPolygon(Point theCenter, Point pointOnCircle, int sideNum) {
+    public SymetricPolygon(Point theCenter, Point pointOnCircle, int sideNum) {
         setLocation(theCenter);
         setPoints(getPolygonPoints(theCenter, pointOnCircle, sideNum));
     }
 
-    public RegularPolygon(Point theCenter, Point pointOnCircle, int sideNum, int frameWidth, Color frameColor, Color fillColor) {
+    public SymetricPolygon(Point theCenter, Point pointOnCircle, int sideNum, int frameWidth, Color frameColor, Color fillColor) {
         super(theCenter, frameWidth, frameColor, fillColor);
         this.sideNum = sideNum;
         setPoints(getPolygonPoints(theCenter, pointOnCircle, sideNum));

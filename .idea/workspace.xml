@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ec87e3f-bcca-47ba-a669-457dc68d6be6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Figures/Shape.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Figures/polygon/RegularPolygon.java" afterPath="$PROJECT_DIR$/src/Figures/polygon/SymetricPolygon.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,10 +14,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RegularPolygon.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Figures/polygon/RegularPolygon.java">
+      <file leaf-file-name="SymetricPolygon.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Figures/polygon/SymetricPolygon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-424">
+            <state relative-caret-position="170">
               <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
@@ -74,7 +73,6 @@
         <option value="$PROJECT_DIR$/src/Figures/base/CloseShape.java" />
         <option value="$PROJECT_DIR$/src/Figures/base/RectangularShape2D.java" />
         <option value="$PROJECT_DIR$/src/Figures/polygon/Rectangle.java" />
-        <option value="$PROJECT_DIR$/src/Figures/polygon/SymetricPolygon.java" />
         <option value="$PROJECT_DIR$/src/Figures/polygon/Parallelogram.java" />
         <option value="$PROJECT_DIR$/src/Figures/polygon/Rhombus.java" />
         <option value="$PROJECT_DIR$/src/Figures/base/Shape2D.java" />
@@ -83,6 +81,7 @@
         <option value="$PROJECT_DIR$/src/Figures/polygon/RegularPolygon.java" />
         <option value="$PROJECT_DIR$/src/Figures/ellipse/Circle.java" />
         <option value="$PROJECT_DIR$/src/Figures/ellipse/Ellipse.java" />
+        <option value="$PROJECT_DIR$/src/Figures/polygon/SymetricPolygon.java" />
       </list>
     </option>
   </component>
@@ -287,12 +286,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522160732717</updated>
-      <workItem from="1522160756324" duration="4671000" />
+      <workItem from="1522160756324" duration="4849000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4671000" />
+    <option name="totallyTimeSpent" value="4849000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -474,9 +473,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Figures/polygon/RegularPolygon.java">
+    <entry file="file://$PROJECT_DIR$/src/Figures/polygon/SymetricPolygon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-424">
+        <state relative-caret-position="170">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
