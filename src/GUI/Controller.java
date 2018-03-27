@@ -2,8 +2,6 @@ package GUI;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Paint;
 
 public class Controller {
     public Canvas canvas;
@@ -11,9 +9,9 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        GraphicsContext g = canvas.getGraphicsContext2D();
-        g.setFill(Paint.valueOf("black"));
-        g.fillRect(10, 10, 100, 100);
+//        GraphicsContext g = canvas.getGraphicsContext2D();
+//        g.setFill(Paint.valueOf("black"));
+//        g.fillRect(10, 10, 100, 100);
     }
 
     private enum Mode {
