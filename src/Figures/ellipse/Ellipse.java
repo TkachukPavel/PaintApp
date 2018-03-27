@@ -52,7 +52,7 @@ public class Ellipse extends Shape2D {
         super.move(pt);
     }
 
-    private int[] setCornerPoint(Point cornerPoint) {
+    protected int[] setCornerPoint(Point cornerPoint) {
         this.cornerPoint = cornerPoint;
         Point theCenter = getLocation();
         adaptCornerPoint(theCenter);

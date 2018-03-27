@@ -1,0 +1,41 @@
+package Figures.ellipse;
+
+import java.awt.*;
+
+public class Rectangle extends Ellipse {
+
+    public Rectangle() {
+
+    }
+
+    public Rectangle(Point theCenter, Point secondPoint) {
+        super(theCenter, secondPoint);
+    }
+
+    public Rectangle(Point theCenter, Point cornerPoint, int frameWidth, Color frameColor, Color fillColor) {
+        super(theCenter, cornerPoint, frameWidth, frameColor, fillColor);
+    }
+
+    @Override
+    public void draw(Graphics2D g) {
+        int[] size = setCornerPoint(cornerPoint);
+        int width = size[0];
+        int height = size[1];
+        g.setStroke(new BasicStroke(getFrameWidth()));
+        g.setColor(getFillColor());
+        g.fillRect(cornerPoint.x, cornerPoint.y, width, height);
+        g.setColor(getFrameColor());
+        g.drawRect(cornerPoint.x, cornerPoint.y, width, height);
+
+    }
+
+    @Override
+    public boolean contains(Point pt) {
+        int[] size = setCornerPoint(cornerPoint);
+        int width = size[0];
+        int height = size[1];
+        return pt.x >= cornerPoint.x && pt.x <= cornerPoint.x + width &&
+                pt.y >= cornerPoint.y && pt.y <= cornerPoint.y + height;
+    }
+
+}
