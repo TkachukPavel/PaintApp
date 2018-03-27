@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller" maxHeight="-Infinity"
+            maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/9.0.1">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Canvas fx:id="canvas" height="400.0" layoutX="171.0" layoutY="91.0" width="600.0"
+                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                        AnchorPane.topAnchor="0.0"/>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
