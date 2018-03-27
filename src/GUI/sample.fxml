@@ -4,8 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1"
             fx:controller="GUI.Controller">
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -16,78 +15,76 @@
     </center>
     <top>
         <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <items>
-                <Button mnemonicParsing="false" text="1">
-                    <tooltip>
-                        <Tooltip text="Select"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="10.0" layoutY="13.0" mnemonicParsing="false" text="2">
-                    <tooltip>
-                        <Tooltip text="Line"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="66.0" layoutY="13.0" mnemonicParsing="false" text="3">
-                    <tooltip>
-                        <Tooltip text="Ray"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="122.0" layoutY="13.0" mnemonicParsing="false" text="4">
-                    <tooltip>
-                        <Tooltip text="Segment"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="178.0" layoutY="13.0" mnemonicParsing="false" text="5">
-                    <tooltip>
-                        <Tooltip text="Ellipse"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="234.0" layoutY="13.0" mnemonicParsing="false" text="6">
-                    <tooltip>
-                        <Tooltip text="Circle"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="290.0" layoutY="13.0" mnemonicParsing="false" text="7">
-                    <tooltip>
-                        <Tooltip text="Polygon"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="346.0" layoutY="13.0" mnemonicParsing="false" text="8">
-                    <tooltip>
-                        <Tooltip text="Rectangle"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="402.0" layoutY="13.0" mnemonicParsing="false" text="9">
-                    <tooltip>
-                        <Tooltip text="Square"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="458.0" layoutY="13.0" mnemonicParsing="false" text="10">
-                    <tooltip>
-                        <Tooltip text="Right Triangle"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="514.0" layoutY="13.0" mnemonicParsing="false" text="11">
-                    <tooltip>
-                        <Tooltip text="Isoseceles Triangle"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="524.0" layoutY="23.0" mnemonicParsing="false" text="12">
-                    <tooltip>
-                        <Tooltip text="Symmetric Polygon"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="534.0" layoutY="33.0" mnemonicParsing="false" text="13">
-                    <tooltip>
-                        <Tooltip text="Line Color"/>
-                    </tooltip>
-                </Button>
-                <Button layoutX="534.0" layoutY="33.0" mnemonicParsing="false" text="14">
-                    <tooltip>
-                        <Tooltip text="Fill Color"/>
-                    </tooltip>
-                </Button>
-            </items>
+            <Button fx:id="bttnSelection" mnemonicParsing="false" text="1">
+                <tooltip>
+                    <Tooltip text="Select"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnLine" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" text="2">
+                <tooltip>
+                    <Tooltip text="Line"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnRay" layoutX="66.0" layoutY="13.0" mnemonicParsing="false" text="3">
+                <tooltip>
+                    <Tooltip text="Ray"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnSegment" layoutX="122.0" layoutY="13.0" mnemonicParsing="false" text="4">
+                <tooltip>
+                    <Tooltip text="Segment"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnEllipse" layoutX="178.0" layoutY="13.0" mnemonicParsing="false" text="5">
+                <tooltip>
+                    <Tooltip text="Ellipse"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnCircle" layoutX="234.0" layoutY="13.0" mnemonicParsing="false" text="6">
+                <tooltip>
+                    <Tooltip text="Circle"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnPolygon" layoutX="290.0" layoutY="13.0" mnemonicParsing="false" text="7">
+                <tooltip>
+                    <Tooltip text="Polygon"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnRectangle" layoutX="346.0" layoutY="13.0" mnemonicParsing="false" text="8">
+                <tooltip>
+                    <Tooltip text="Rectangle"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnRhombus" layoutX="402.0" layoutY="13.0" mnemonicParsing="false" text="9">
+                <tooltip>
+                    <Tooltip text="Rhombus"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnRightTriangle" layoutX="458.0" layoutY="13.0" mnemonicParsing="false" text="10">
+                <tooltip>
+                    <Tooltip text="Right Triangle"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnIsosecelesTriangle" layoutX="514.0" layoutY="13.0" mnemonicParsing="false" text="11">
+                <tooltip>
+                    <Tooltip text="Isoseceles Triangle"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnSymmetricPolygon" layoutX="524.0" layoutY="23.0" mnemonicParsing="false" text="12">
+                <tooltip>
+                    <Tooltip text="Symmetric Polygon"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnLineColor" layoutX="534.0" layoutY="33.0" mnemonicParsing="false" text="13">
+                <tooltip>
+                    <Tooltip text="Line Color"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="bttnFillColor" layoutX="534.0" layoutY="33.0" mnemonicParsing="false" text="14">
+                <tooltip>
+                    <Tooltip text="Fill Color"/>
+                </tooltip>
+            </Button>
         </ToolBar>
     </top>
 </BorderPane>
