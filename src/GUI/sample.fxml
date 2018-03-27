@@ -75,16 +75,16 @@
                     <Tooltip text="Symmetric Polygon"/>
                 </tooltip>
             </Button>
-            <Button fx:id="bttnLineColor" layoutX="534.0" layoutY="33.0" mnemonicParsing="false" text="13">
+            <ColorPicker fx:id="clrPckrLineColor" editable="true" prefHeight="25.0" prefWidth="49.0">
                 <tooltip>
                     <Tooltip text="Line Color"/>
                 </tooltip>
-            </Button>
-            <Button fx:id="bttnFillColor" layoutX="534.0" layoutY="33.0" mnemonicParsing="false" text="14">
+            </ColorPicker>
+            <ColorPicker fx:id="clrPckrFillColor" editable="true" prefHeight="25.0" prefWidth="51.0">
                 <tooltip>
                     <Tooltip text="Fill Color"/>
                 </tooltip>
-            </Button>
+            </ColorPicker>
         </ToolBar>
     </top>
 </BorderPane>

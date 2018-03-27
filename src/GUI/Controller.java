@@ -3,7 +3,9 @@ package GUI;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.paint.Color;
 
 public class Controller {
     public Canvas canvas;
@@ -18,11 +20,13 @@ public class Controller {
     public Button bttnRhombus;
     public Button bttnIsosecelesTriangle;
     public Button bttnSymmetricPolygon;
-    public Button bttnLineColor;
-    public Button bttnFillColor;
     public Button bttnRightTriangle;
+    public ColorPicker clrPckrLineColor;
+    public ColorPicker clrPckrFillColor;
     private Mode currentMode = Mode.SELECTION;
     private int symPolEdgesAmount = 0;
+    private Color fillColor;
+    private Color lineColor;
 
     @FXML
     public void initialize() {
@@ -52,6 +56,8 @@ public class Controller {
 
             });
         });
+        clrPckrFillColor.setOnAction(event -> fillColor = clrPckrFillColor.getValue());
+        clrPckrLineColor.setOnAction(event -> lineColor = clrPckrLineColor.getValue());
     }
 
     private enum Mode {
