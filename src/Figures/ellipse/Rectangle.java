@@ -21,26 +21,22 @@ public class Rectangle extends Ellipse {
 
     @Override
     public void draw(GraphicsContext g) {
-        int[] size = setCornerPoint(cornerPoint);
-        int width = size[0];
-        int height = size[1];
-//        g.setStroke(new BasicStroke(getFrameWidth()));
-//        g.setColor(getFillColor());
-//        g.fillRect(cornerPoint.x, cornerPoint.y, width, height);
-//        g.setColor(getFrameColor());
-//        g.drawRect(cornerPoint.x, cornerPoint.y, width, height);
-        g.setFill(javafx.scene.paint.Paint.valueOf(getFillColor().toString()));
+        double [] size = setCornerPoint(cornerPoint);
+        int width = (int) size[0];
+        int height = (int) size[1];
+        g.setLineWidth(1);
+        g.setFill(getFillColor());
         g.fillRect(cornerPoint.getX(), cornerPoint.getY(), width, height);
-        g.setStroke(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
+        g.setStroke(getStrokeColor());
         g.strokeRect(cornerPoint.getX(), cornerPoint.getY(), width, height);
 
     }
 
     @Override
     public boolean contains(Point2D pt) {
-        int[] size = setCornerPoint(cornerPoint);
-        int width = size[0];
-        int height = size[1];
+        double[] size = setCornerPoint(cornerPoint);
+        int width = (int) size[0];
+        int height = (int) size[1];
         return pt.getX() >= cornerPoint.getX() && pt.getX() <= cornerPoint.getX() + width &&
                 pt.getY() >= cornerPoint.getY() && pt.getY() <= cornerPoint.getY() + height;
     }

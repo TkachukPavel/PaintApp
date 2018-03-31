@@ -5,8 +5,6 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 
-import java.awt.*;
-
 public class Segment extends Shape1D {
 
     public Segment(Point2D theCenter, Point2D endPoint, int frameWidth, Paint frameColor) {
@@ -17,8 +15,8 @@ public class Segment extends Shape1D {
     @Override
     public void draw(GraphicsContext g) {
         Point2D startPoint = getLocation();
-//        g.setStroke(new BasicStroke(getFrameWidth()));
-        g.setFill(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
+//        g.setStroke(new BasicStroke(getLineWidth()));
+        g.setFill(javafx.scene.paint.Paint.valueOf(getStrokeColor().toString()));
         g.moveTo(startPoint.getX(), startPoint.getY());
         g.lineTo( secondPoint.getX(), secondPoint.getY());
     }
@@ -29,7 +27,7 @@ public class Segment extends Shape1D {
         int a = (int)(secondPoint.getY() - theCenter.getY());
         int b = (int)(secondPoint.getX() - theCenter.getX());
         double d = (a * pt.getX() - b * pt.getY() + b * theCenter.getY() - a * theCenter.getX()) / (Math.sqrt(a * a + b * b));
-        return Math.abs(d) < getFrameWidth() / 2;
+        return Math.abs(d) < getLineWidth() / 2;
     }
 
     @Override

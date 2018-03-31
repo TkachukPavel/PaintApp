@@ -9,38 +9,42 @@ import javafx.scene.paint.Paint;
 public class Ellipse extends Shape2D {
 
     protected Point2D cornerPoint;
+    private double width;
+    private double height;
 
     public Ellipse() {
 
     }
 
-    public Ellipse(javafx.geometry.Point2D theCenter, Point2D cornerPoint) {
+    public Ellipse(Point2D theCenter, Point2D cornerPoint) {
         super(theCenter);
         this.cornerPoint = cornerPoint;
+        width = Math.abs(theCenter.getX() - cornerPoint.getX());
+        height = Math.abs(theCenter.getY() - cornerPoint.getY());
     }
 
-    public Ellipse(Point2D theCenter, Point2D cornerPoint, int frameWidth, Paint frameColor, Paint fillColor) {
+    public Ellipse(Point2D theCenter, Point2D cornerPoint, double frameWidth, Paint frameColor, Paint fillColor) {
         super(theCenter, frameWidth, frameColor, fillColor);
         this.cornerPoint = cornerPoint;
     }
 
     @Override
     public void draw(GraphicsContext g) {
-        int[] size = setCornerPoint(cornerPoint);
-        int width = size[0];
-        int height = size[1];
-//        g.setStroke(new BasicStroke(getFrameWidth()));
-        g.setFill(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
+        double[] size = setCornerPoint(cornerPoint);
+        double width = size[0];
+        double height = size[1];
+        g.setLineWidth(getLineWidth());
+        g.setFill(getFillColor());
         g.fillOval(cornerPoint.getX(), cornerPoint.getY(), width, height);
-        g.setStroke(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
+        g.setStroke(getStrokeColor());
         g.strokeOval(cornerPoint.getX(), cornerPoint.getY(), width, height);
     }
 
     @Override
     public boolean contains(Point2D pt) {
-        int[] size = setCornerPoint(cornerPoint);
-        int width = size[0];
-        int height = size[1];
+        double[] size = setCornerPoint(cornerPoint);
+        double width = size[0];
+        double height = size[1];
         Point2D theCenter = getLocation();
         double alpha = (double) (pt.getX() - theCenter.getX()) / width;
         double beta = (double) (pt.getY() - theCenter.getY()) / height;
@@ -56,13 +60,13 @@ public class Ellipse extends Shape2D {
         super.move(pt);
     }
 
-    public int[] setCornerPoint(Point2D cornerPoint) {
+    public double[] setCornerPoint(Point2D cornerPoint) {
         this.cornerPoint = cornerPoint;
         Point2D theCenter = getLocation();
         adaptCornerPoint(theCenter);
-        int [] size = new int[2];
-        size[0] = 2 * (int) (theCenter.getX() - cornerPoint.getX());
-        size[1] = 2 * (int) (theCenter.getY() - cornerPoint.getY());
+        double [] size = new double[2];
+        size[0] = 2 * (theCenter.getX() - cornerPoint.getX());
+        size[1] = 2 * (theCenter.getY() - cornerPoint.getY());
         return size;
     }
 

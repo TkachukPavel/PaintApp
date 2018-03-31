@@ -5,59 +5,55 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 
-import java.awt.*;
-
 
 public abstract class Shape {
 
-    private Paint frameColor = Paint.valueOf(Color.black.toString());
-    private int frameWidth = 1;
-    private Point2D theCenter;
+    private Paint strokeColor = Paint.valueOf("black");
+    private double lineWidth = 1;
+    private Point2D centerPt;
 
-    public Shape() {
+    public Shape() {}
 
+    public Shape(Point2D centerPt) {
+        this.centerPt = centerPt;
     }
 
-    public Shape(Point2D theCenter) {
-        this.theCenter = theCenter;
+    public Shape(Point2D centerPt, double lineWidth, Paint strokeColor) {
+        this.centerPt = centerPt;
+        this.lineWidth = lineWidth;
+        this.strokeColor = strokeColor;
     }
 
-    public Shape(Point2D theCenter, int frameWidth, Paint frameColor) {
-        this.theCenter = theCenter;
-        this.frameWidth = frameWidth;
-        this.frameColor = frameColor;
-    }
-
-    public abstract void draw(GraphicsContext g);
+    public abstract void draw(GraphicsContext gc);
 
     public abstract boolean contains(Point2D pt);
 
     public Point2D getLocation() {
-        return theCenter;
+        return centerPt;
     }
 
     public void setLocation(Point2D theCenter) {
-        this.theCenter=theCenter;
+        this.centerPt = theCenter;
     }
 
     public void move(Point2D pt) {
-        theCenter = pt;
+        centerPt = pt;
     }
 
-    public Paint getFrameColor() {
-        return frameColor;
+    public Paint getStrokeColor() {
+        return strokeColor;
     }
 
-    public void setFrameColor(Paint frameColor) {
-        this.frameColor = frameColor;
+    public void setStrokeColor(Paint strokeColor) {
+        this.strokeColor = strokeColor;
     }
 
-    public int getFrameWidth() {
-        return frameWidth;
+    public double getLineWidth() {
+        return lineWidth;
     }
 
-    public void setFrameWidth(int frameWidth) {
-        this.frameWidth = frameWidth;
+    public void setLineWidth(int lineWidth) {
+        this.lineWidth = lineWidth;
     }
 
 }

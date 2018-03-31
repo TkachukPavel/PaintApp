@@ -14,7 +14,7 @@ public abstract class Shape2D extends Shape {
         super(theCenter);
     }
 
-    public Shape2D(Point2D theCenter, int frameWidth, Paint frameColor, Paint fillColor) {
+    public Shape2D(Point2D theCenter, double frameWidth, Paint frameColor, Paint fillColor) {
         super(theCenter, frameWidth, frameColor);
         this.fillColor = fillColor;
     }

@@ -16,7 +16,7 @@ public abstract class Shape1D extends Shape {
         super(theCenter);
     }
 
-    public Shape1D(Point2D theCenter, int frameWidth, Paint frameColor) {
+    public Shape1D(Point2D theCenter, double frameWidth, Paint frameColor) {
         super(theCenter, frameWidth, frameColor);
     }
 }

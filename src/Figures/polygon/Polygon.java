@@ -127,7 +127,7 @@ public abstract class Polygon extends Shape2D {
             pointY[i] =  points[i].getY();
         }
         g.fillPolygon(pointX, pointY, nPoints);
-        g.setFill(javafx.scene.paint.Paint.valueOf(getFrameColor().toString()));
+        g.setFill(javafx.scene.paint.Paint.valueOf(getStrokeColor().toString()));
         g.strokePolygon(pointX, pointY, nPoints);
     }
 
