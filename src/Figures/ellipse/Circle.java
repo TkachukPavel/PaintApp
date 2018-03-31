@@ -20,19 +20,13 @@ public class Circle extends Ellipse {
     }
 
     @Override
-    protected void adaptCornerPoint(Point2D theCenter){
-        int deltaX = (int)(theCenter.getX()-cornerPoint.getX());
-        int deltaY = (int) (theCenter.getY()-cornerPoint.getY());
-        if (deltaX<0) {
-            double x = cornerPoint.getX() + 2 * deltaX;
-            double y = cornerPoint.getY();
-            cornerPoint = new Point2D(x, y);
-        }
-        if (deltaY<0) {
-            double x = cornerPoint.getX();
-            double y = cornerPoint.getY() + 2 * deltaY;
-            cornerPoint = new Point2D(x, y);
-        }
-        cornerPoint = new Point2D(cornerPoint.getX(), theCenter.getY()-theCenter.getX()+cornerPoint.getX());
+    public double[] setCornerPoint(Point2D cornerPoint) {
+        this.cornerPoint = cornerPoint;
+        Point2D theCenter = getLocation();
+        double [] size = new double[2];
+        double max = Math.max(2 * (theCenter.getX() - cornerPoint.getX()), 2 * (theCenter.getY() - cornerPoint.getY()));
+        size[0] = max;
+        size[1] = max;
+        return size;
     }
 }

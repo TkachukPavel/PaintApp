@@ -1,6 +1,7 @@
 package Figures.line;
 
 import Figures.base.Shape1D;
+import com.sun.prism.BasicStroke;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
@@ -15,10 +16,14 @@ public class Segment extends Shape1D {
     @Override
     public void draw(GraphicsContext g) {
         Point2D startPoint = getLocation();
-//        g.setStroke(new BasicStroke(getLineWidth()));
+        g.setLineWidth(getLineWidth());
         g.setFill(javafx.scene.paint.Paint.valueOf(getStrokeColor().toString()));
+        g.beginPath();
         g.moveTo(startPoint.getX(), startPoint.getY());
+        g.setStroke(getStrokeColor());
+        setEndPoint(secondPoint);
         g.lineTo( secondPoint.getX(), secondPoint.getY());
+        g.stroke();
     }
 
     @Override

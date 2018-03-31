@@ -36,7 +36,8 @@ public abstract class Polygon extends Shape2D {
         this.points = new Point2D[nPoints];
         int i = 0;
         for (Point2D p : points) {
-            this.points[++i] = p;
+            this.points[i] = p;
+            i++;
         }
     }
 

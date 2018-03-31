@@ -1,6 +1,7 @@
 package Figures.line;
 
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 
 import java.awt.*;
@@ -18,6 +19,7 @@ public class Ray extends Segment {
             endPoint = getOutScreenPoint(endPoint);
         super.setEndPoint(endPoint, smooth);
     }
+
 
     public Point2D getOutScreenPoint(Point2D pt) {
         Point2D theCenter = getLocation();

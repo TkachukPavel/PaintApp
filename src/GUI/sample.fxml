@@ -53,9 +53,9 @@
                     <Tooltip text="Circle" />
                 </tooltip>
             </Button>
-            <Button fx:id="bttnPolygon" layoutX="290.0" layoutY="13.0" mnemonicParsing="false" text="7">
+            <Button fx:id="bttnParallelogram" layoutX="290.0" layoutY="13.0" mnemonicParsing="false" text="7">
                 <tooltip>
-                    <Tooltip text="Polygon" />
+                    <Tooltip text="Parallelogram" />
                 </tooltip>
             </Button>
             <Button fx:id="bttnRectangle" layoutX="346.0" layoutY="13.0" mnemonicParsing="false" text="8">

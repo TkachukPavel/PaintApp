@@ -63,25 +63,9 @@ public class Ellipse extends Shape2D {
     public double[] setCornerPoint(Point2D cornerPoint) {
         this.cornerPoint = cornerPoint;
         Point2D theCenter = getLocation();
-        adaptCornerPoint(theCenter);
         double [] size = new double[2];
         size[0] = 2 * (theCenter.getX() - cornerPoint.getX());
         size[1] = 2 * (theCenter.getY() - cornerPoint.getY());
         return size;
-    }
-
-    protected void adaptCornerPoint(Point2D theCenter) {
-        double deltaX = theCenter.getX() - cornerPoint.getX();
-        double deltaY = theCenter.getY() - cornerPoint.getX();
-        if (deltaX < 0) {
-            double x = cornerPoint.getX() + 2 * deltaX;
-            double y = cornerPoint.getY();
-            cornerPoint = new Point2D(x, y);
-        }
-        if (deltaY < 0) {
-            double x = cornerPoint.getX();
-            double y = cornerPoint.getY() + 2 * deltaY;
-            cornerPoint = new Point2D(x, y);
-        }
     }
 }
